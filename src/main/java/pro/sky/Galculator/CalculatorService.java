@@ -1,27 +1,29 @@
 package pro.sky.Galculator;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Service
 public class CalculatorService implements CalculatorInterface{
-    @Override
     public String greet() {
-        return "Добро пожаловать в калькулятор";
+        return "<big>Добро пожаловать в калькулятор</big>";
     }
 
-    @Override
     public double add(double a, double b) {
         return a + b;
     }
 
-    @Override
     public double subtract(double a, double b) {
         return a - b;
     }
 
-    @Override
-    public double multiplicate(double a, double b) {
+
+    public double multiply(double a, double b) {
         return a * b;
     }
 
-    @Override
+
     public double divide(double a, double b) {
         return a / b;
     }
