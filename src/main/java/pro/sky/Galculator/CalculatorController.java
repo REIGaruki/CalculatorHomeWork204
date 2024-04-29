@@ -20,25 +20,25 @@ public class CalculatorController {
     @GetMapping(path="/plus")
     public String add(@RequestParam(value = "num1", required = true) double a,
                       @RequestParam(value = "num2", required = true) double b) {
-        return a + " + " + b + " = " + calculatorService.add(a, b);
+        return "<big>" + a + " + " + b + " = " + calculatorService.add(a, b) + "</big>";
     }
     @GetMapping(path="/minus")
     public String subtract(@RequestParam(value = "num1", required = true) double a,
                            @RequestParam(value = "num2", required = true) double b) {
-        return a + " - " + b + " = " + calculatorService.subtract(a, b);
+        return "<big>" + a + " - " + b + " = " + calculatorService.subtract(a, b) + "</big>";
     }
     @GetMapping(path="/multiply")
     public String multiply(@RequestParam(value = "num1", required = true) double a,
                            @RequestParam(value = "num2", required = true) double b) {
-        return a + " * " + b + " = " + calculatorService.multiply(a, b);
+        return "<big>" + a + " * " + b + " = " + calculatorService.multiply(a, b) + "</big>";
     }
     @GetMapping(path="/divide")
     public String divide(@RequestParam(value = "num1", required = true) double a,
                          @RequestParam(value = "num2", required = true) double b) {
         if (b == 0) {
-            return "Деление на ноль недопустимо";
+            return "<big>Деление на ноль недопустимо</big>";
         } else {
-            return a + " / " + b + " = " + calculatorService.divide(a, b);
+            return "<big>" + a + " / " + b + " = " + calculatorService.divide(a, b) + "</big>";
         }
     }
 }
