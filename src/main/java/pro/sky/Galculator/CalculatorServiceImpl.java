@@ -1,51 +1,46 @@
 package pro.sky.Galculator;
 
 import org.springframework.stereotype.Service;
+import pro.sky.Galculator.exceptions.NoParamException;
+import pro.sky.Galculator.exceptions.ZeroDivisionException;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService{
 
     public String add(String num1, String num2) {
-        if (num1 == null || num2 == null) {
-            return "<big>Не введены параметры</big>";
-        } else {
-            double a = Double.parseDouble(num1);
-            double b = Double.parseDouble(num2);
-            return "<big>" + a + " + " + b + " = " + (a + b) + "</big>";
-        }
+        throwExceptionIfParamAbsent(num1,num2);
+        int a = Integer.parseInt(num1);
+        int b = Integer.parseInt(num2);
+        return "<big>" + a + " + " + b + " = " + (a + b) + "</big>";
     }
 
     public String subtract(String num1, String num2) {
-        if (num1 == null || num2 == null) {
-            return "<big>Не введены параметры</big>";
-        } else {
-            double a = Double.parseDouble(num1);
-            double b = Double.parseDouble(num2);
-            return "<big>" + a + " - " + b + " = " + (a - b) + "</big>";
-        }
+        throwExceptionIfParamAbsent(num1,num2);
+        int a = Integer.parseInt(num1);
+        int b = Integer.parseInt(num2);
+        return "<big>" + a + " - " + b + " = " + (a - b) + "</big>";
     }
-
 
     public String multiply(String num1, String num2) {
-        if (num1 == null || num2 == null) {
-            return "<big>Не введены параметры</big>";
-        } else {
-            double a = Double.parseDouble(num1);
-            double b = Double.parseDouble(num2);
-            return "<big>" + a + " * " + b + " = " + (a * b) + "</big>";
-        }
+        throwExceptionIfParamAbsent(num1, num2);
+        int a = Integer.parseInt(num1);
+        int b = Integer.parseInt(num2);
+        return "<big>" + a + " * " + b + " = " + (a * b) + "</big>";
     }
 
-
     public String divide(String num1, String num2) {
-        if (num1 == null || num2 == null) {
-            return "<big>Не введены параметры</big>";
-        } else if (Double.parseDouble(num2) == 0) {
-            return "<big>Деление на ноль недопустимо</big>";
+        throwExceptionIfParamAbsent(num1,num2);
+        if (Integer.parseInt(num2) == 0) {
+            throw new ZeroDivisionException();
         } else {
-            double a = Double.parseDouble(num1);
-            double b = Double.parseDouble(num2);
+            int a = Integer.parseInt(num1);
+            int b = Integer.parseInt(num2);
             return "<big>" + a + " / " + b + " = " + (a / b) + "</big>";
+        }
+    }
+    private void throwExceptionIfParamAbsent(Object a, Object b) {
+        if (a == null || b == null) {
+            throw new NoParamException();
         }
     }
 }
