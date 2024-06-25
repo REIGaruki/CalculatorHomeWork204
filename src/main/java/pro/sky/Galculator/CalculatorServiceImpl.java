@@ -31,7 +31,7 @@ public class CalculatorServiceImpl implements CalculatorService{
     public String divide(String num1, String num2) {
         throwExceptionIfParamAbsent(num1,num2);
         if (Integer.parseInt(num2) == 0) {
-            throw new ZeroDivisionException();
+            throw new ZeroDivisionException("Can't divide by zero");
         } else {
             int a = Integer.parseInt(num1);
             int b = Integer.parseInt(num2);
@@ -40,7 +40,7 @@ public class CalculatorServiceImpl implements CalculatorService{
     }
     private void throwExceptionIfParamAbsent(Object a, Object b) {
         if (a == null || b == null) {
-            throw new NoParamException();
+            throw new NoParamException("One or all parameters are missing");
         }
     }
 }
