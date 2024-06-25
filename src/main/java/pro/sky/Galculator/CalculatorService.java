@@ -1,10 +1,9 @@
 package pro.sky.Galculator;
 
 public interface CalculatorService {
-    String greet();
-    double add(double a, double b);
-    double subtract(double a, double b);
-    double multiply(double a, double b);
-    double divide(double a, double b);
+    String add(String a, String b);
+    String subtract(String a, String b);
+    String multiply(String a, String b);
+    String divide(String a, String b);
 
 }
